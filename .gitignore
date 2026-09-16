@@ -37,6 +37,7 @@ yarn-error.*
 !.env.example
 !server/.env.example
 !v2/backend/.env.example
+!v3/backend/.env.example
 
 # typescript
 *.tsbuildinfo

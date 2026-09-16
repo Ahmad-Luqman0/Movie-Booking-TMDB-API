@@ -1,0 +1,50 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Movie {
+  id           String       @id @default(uuid())
+  tmdbId       Int          @unique @map("tmdb_id")
+  title        String
+  overview     String?      @db.Text
+  releaseDate  String?      @map("release_date")
+  posterPath   String?      @map("poster_path")
+  backdropPath String?      @map("backdrop_path")
+  rating       Float        @default(0.0)
+  duration     String?
+  director     String?
+  trailerKey   String?      @map("trailer_key")
+  cachedAt     DateTime     @default(now()) @map("cached_at")
+  updatedAt    DateTime     @updatedAt @map("updated_at")
+  genres       MovieGenre[]
+
+  @@map("movies")
+}
+
+model Genre {
+  id        String       @id @default(uuid())
+  tmdbId    Int          @unique @map("tmdb_id")
+  name      String
+  createdAt DateTime     @default(now()) @map("created_at")
+  updatedAt DateTime     @updatedAt @map("updated_at")
+  movies    MovieGenre[]
+
+  @@map("genres")
+}
+
+model MovieGenre {
+  id      String @id @default(uuid())
+  movieId String @map("movie_id")
+  genreId String @map("genre_id")
+
+  movie Movie @relation(fields: [movieId], references: [id], onDelete: Cascade)
+  genre Genre @relation(fields: [genreId], references: [id], onDelete: Cascade)
+
+  @@unique([movieId, genreId])
+  @@map("movie_genres")
+}
