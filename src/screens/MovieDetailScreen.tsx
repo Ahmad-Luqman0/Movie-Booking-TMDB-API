@@ -15,7 +15,7 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
-import { Movie, RootStackParamList } from '../types';
+import { RootStackParamList } from '../types';
 import { TrailerModal } from '../components/TrailerModal';
 import { fetchMovieDetails, ExtendedMovieDetails } from '../services/api';
 import { COLORS, FONTS } from '../constants/theme';

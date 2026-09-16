@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-  FlatList,
   ScrollView,
   StyleSheet,
   Text,

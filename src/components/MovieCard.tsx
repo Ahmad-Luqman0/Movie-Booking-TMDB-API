@@ -1,8 +1,8 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ImageBackground, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Movie } from '../types';
-import { BORDER_RADIUS, COLORS, FONTS } from '../constants/theme';
+import { COLORS, FONTS } from '../constants/theme';
 
 interface MovieCardProps {
   movie: Movie;
